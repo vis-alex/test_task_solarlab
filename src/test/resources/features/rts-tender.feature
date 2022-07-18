@@ -1,6 +1,6 @@
-Feature: Get Home Page
+Feature: Get Initial price and summary amount units of measure
 
-  Scenario: Get Home Page
+  Scenario: Get Initial price and summary amount units of measure
     Then Click "/zakupki-223/participants-223" link
     Then Click "/poisk/poisk-223-fz/" link
     Then Click "main-search__settings" settings

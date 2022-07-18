@@ -12,8 +12,5 @@ public class GetAndLogInfoStepDef {
     public void getAndLogResultInfo() {
         log.info("Step - get result list of info and log it in file");
         resultPage.getElementFromPage();
-        while(true) {
-            String a = "";
-        }
     }
 }

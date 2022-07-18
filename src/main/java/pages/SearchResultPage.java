@@ -36,17 +36,34 @@ public class SearchResultPage {
 
         while (iterator.hasNext()) {
             //находим значения начально цены для элемента закупки
-            SelenideElement element = iterator.next();
-            SelenideElement initialPrice = element.find("div[itemprop='price']");
+            SelenideElement cardItem = iterator.next();
+            SelenideElement initialPrice = cardItem.find("div[itemprop='price']");
             String pr = initialPrice.getAttribute("content");
             System.out.println(pr);
 
 //             находим все Позиции закупки и вытаскиваем их количество
-//             tr[@class='']
-            SelenideElement tr = element.find("tr[class='']");
-            System.out.println(tr);
+            //div[@class='table-wrapper']//tr[@style='']/td/following-sibling::td/following-sibling::td
 
-            String s = "";
+
+            ElementsCollection.SelenideElementIterable tableWrapperDivForRequest =
+                    cardItem.$$("div[class='table-wrapper']").asDynamicIterable();
+            Iterator<SelenideElement> tableWrapperIterator = tableWrapperDivForRequest.iterator();
+
+
+            while (tableWrapperIterator.hasNext()) {
+                SelenideElement divTableWrapper= iterator.next();
+                ElementsCollection.SelenideElementIterable trsForRequest =
+                        cardItem.$$("tr[style='']").asDynamicIterable();
+                Iterator<SelenideElement> trIterator = trsForRequest.iterator();
+
+                while (trIterator.hasNext()) {
+                    SelenideElement trItem= iterator.next();
+                    SelenideElement td = trItem.find("td", 3);
+                    String val = td.getText();
+                    System.out.println("Количество - " + val);
+                }
+
+            }
     }
     }
 
