@@ -53,7 +53,7 @@ public class SearchResultPage {
             while (tableWrapperIterator.hasNext()) {
                 SelenideElement divTableWrapper= iterator.next();
                 ElementsCollection.SelenideElementIterable trsForRequest =
-                        cardItem.$$("tr[style='']").asDynamicIterable();
+                        divTableWrapper.$$("tr[style='']").asDynamicIterable();
                 Iterator<SelenideElement> trIterator = trsForRequest.iterator();
 
                 while (trIterator.hasNext()) {
